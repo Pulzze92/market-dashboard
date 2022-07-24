@@ -2,9 +2,7 @@ import React from 'react';
 import styles from './MarketInfo.scss';
 import axios from 'axios';
 
-const MarketInfo = ({ marketCapSum, marketCap, names, prices, symbols, volumesSum }) => {
-  console.log(volumesSum / 1000000000);
-
+const MarketInfo = ({ marketCapSum, marketCap, names, prices, symbols, volumesSum, exchanges }) => {
   return (
     <div className="market__info">
       <ul className="tickers">
@@ -18,11 +16,7 @@ const MarketInfo = ({ marketCapSum, marketCap, names, prices, symbols, volumesSu
         </li>
         <li className="exchanges">
           <h3>Exchanges</h3>
-          <p></p>
-        </li>
-        <li className="markets">
-          <h3>Markets</h3>
-          <p></p>
+          <p>{exchanges.length}</p>
         </li>
       </ul>
     </div>

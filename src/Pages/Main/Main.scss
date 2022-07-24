@@ -1,0 +1,68 @@
+.main {
+    width: 100vw;
+    
+    .table {
+
+        .tickers {
+            
+            
+
+            ul {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                margin: 0;
+                width: 100vw;
+
+                @media (max-width: 450px) {
+                    column-gap: 1em;
+                    font-size: 15px;
+                }
+
+                @media (max-width: 400px) {
+                    font-size: 13px;
+                }
+            }
+
+            .row {
+                cursor: pointer;
+                padding: 2em;
+                border-bottom: 1px solid gray;
+                transition: all 0.5s;
+                &:hover {
+                    background-color: antiquewhite;
+                }
+
+                &:active {
+                    background-color: rgb(209, 202, 192);
+                }
+
+                .name_coin {
+                    font-weight: 600;
+                }
+            }
+
+
+        }
+
+
+        .titles {
+            font-weight: 700;
+            text-align: center;
+            background-color: rgb(209, 202, 192);
+            display: block;
+            height: 3em;
+            align-content: center;
+        }
+        .green {
+            color: green;
+        }
+
+        .red {
+            color: red;
+        }
+            li {
+                list-style-type: none;
+                text-align: center;
+            }
+    }
+}

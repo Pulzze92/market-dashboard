@@ -4,7 +4,12 @@
   display: grid;
   grid-template-areas: 'header header'
                        'market market'
-                       'navbar main'
+                       'main main'
   ;
   font-family: 'Roboto', sans-serif;
+
+  a {
+    text-decoration: none;
+    color: #f6d738;
+  }
 }

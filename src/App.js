@@ -1,32 +1,45 @@
 import React from 'react';
 import styles from './App.scss';
 import axios from 'axios';
+import { Routes, Route } from 'react-router-dom';
 
 import Header from './Components/Header/Header';
-import Navbar from './Components/Navbar/Navbar';
 import MarketInfo from './Components/MarketInfo/MarketInfo';
+
+import Main from './Pages/Main/Main';
+import Exchanges from './Pages/Exchanges/Exchanges';
+import Markets from './Pages/Markets/Markets';
 
 const App = () => {
   let marketCapSum = 0;
   let volumesSum = 0;
 
   const [data, setData] = React.useState([]);
+  const [exchangesData, setExchangesData] = React.useState([]);
 
   const ids = [];
   const symbols = [];
   const names = [];
   const marketCap = [];
   const volumes = [];
+  const exchanges = [];
+  const ranks = [];
 
   React.useEffect(() => {
     async function getTickers() {
       const coinCapResponse = await (await axios.get('https://api.coincap.io/v2/assets')).data;
+      const exchanges = await (await axios.get('https://api.coincap.io/v2/exchanges')).data;
 
       setData(coinCapResponse.data);
-      // setIds(coinCapResponse.data.id);
+      setExchangesData(exchanges.data);
     }
+
     getTickers();
   }, []);
+
+  // const pricesWs = new WebSocket(`wss://ws.coincap.io/prices?assets=${names}`);
+
+  // pricesWs.onmessage = function (msg) {};
 
   data.forEach((el) => {
     ids.push(el.id);
@@ -34,6 +47,11 @@ const App = () => {
     names.push(el.name);
     marketCap.push(el.marketCapUsd);
     volumes.push(el.volumeUsd24Hr);
+    ranks.push(el.rank);
+  });
+
+  exchangesData.forEach((el, i) => {
+    exchanges.push(el.exchangeId);
   });
 
   marketCap.forEach((el) => {
@@ -53,8 +71,25 @@ const App = () => {
         names={names}
         marketCapSum={marketCapSum}
         volumesSum={volumesSum}
+        exchanges={exchanges}
       />
-      <Navbar />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <Main
+              names={names}
+              ranks={ranks}
+              data={data}
+              ids={ids}
+              symbols={symbols}
+              marketCap={marketCap}
+            />
+          }
+        />
+        <Route path="/exchanges" element={<Exchanges />} />
+        <Route path="/markets" element={<Markets />} />
+      </Routes>
     </div>
   );
 };
