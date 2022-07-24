@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+.App {
+  display: grid;
+  grid-template-areas: 'header header'
+                       'market market'
+                       'navbar main'
+  ;
+  font-family: 'Roboto', sans-serif;
+}

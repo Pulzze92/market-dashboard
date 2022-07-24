@@ -1,0 +1,9 @@
+.market__info {
+    grid-area: market;
+
+    .tickers {
+        li {
+            list-style-type: none;
+        }
+    }
+}

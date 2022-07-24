@@ -1,0 +1,25 @@
+.header {
+    grid-area: header;
+    background-color: rgba(26, 26, 26, 1);
+    height: 10vh;
+    color: #f6d738;
+    font-size: 25px;
+    text-transform: uppercase;
+
+    .menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+
+        li {
+            list-style-type: none;
+            cursor: pointer;
+            transition: transform 0.5s;
+            &:hover {
+                transform: scale(1.2);
+                color: azure;
+                font-weight: 700;
+            }
+        }
+    }
+}
