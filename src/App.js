@@ -9,6 +9,7 @@ import MarketInfo from './Components/MarketInfo/MarketInfo';
 import Main from './Pages/Main/Main';
 import Exchanges from './Pages/Exchanges/Exchanges';
 import Markets from './Pages/Markets/Markets';
+import Coin from './Pages/Coin/Coin';
 
 const App = () => {
   let marketCapSum = 0;
@@ -16,6 +17,7 @@ const App = () => {
 
   const [data, setData] = React.useState([]);
   const [exchangesData, setExchangesData] = React.useState([]);
+  const [selectedCoin, setSelectedCoin] = React.useState();
 
   const ids = [];
   const symbols = [];
@@ -84,11 +86,13 @@ const App = () => {
               ids={ids}
               symbols={symbols}
               marketCap={marketCap}
+              setSelectedCoin={(selectedCoin) => setSelectedCoin(selectedCoin)}
             />
           }
         />
-        <Route path="/exchanges" element={<Exchanges />} />
+        <Route path="/exchanges" element={<Exchanges exchangesData={exchangesData} />} />
         <Route path="/markets" element={<Markets />} />
+        <Route path="/coin" element={<Coin selectedCoin={selectedCoin} />} />
       </Routes>
     </div>
   );

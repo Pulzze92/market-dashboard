@@ -7,6 +7,9 @@ const Header = () => {
   return (
     <div className="header">
       <ul className="menu">
+        <Link to="/">
+          <li>Home</li>
+        </Link>
         <Link to="/exchanges">
           <li>Exchanges</li>
         </Link>

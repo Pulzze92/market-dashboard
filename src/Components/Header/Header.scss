@@ -8,8 +8,7 @@
     width: 100vw;
 
     @media (max-width: 750px) {
-        font-size: 18px;
-        
+        font-size: 18px; 
     }
 
     .menu {
@@ -22,6 +21,11 @@
          justify-content: space-between;   
          padding: 1em 3em;
         }
+
+        @media (max-width: 450px) {
+            
+            padding: 1em 1em 0em 1em;
+           }
 
         li {
             list-style-type: none;
