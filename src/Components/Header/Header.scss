@@ -37,5 +37,23 @@
                 font-weight: 700;
             }
         }
+
+        .home-active {
+            transform: scale(1.2);
+            color: azure;
+            font-weight: 700;
+        }
+
+        .exchange-active {
+            transform: scale(1.2);
+            color: azure;
+            font-weight: 700;
+        }
+
+        .market-active {
+            transform: scale(1.2);
+            color: azure;
+            font-weight: 700;
+        }
     }
 }

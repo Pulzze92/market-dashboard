@@ -1,7 +1,9 @@
 .exchanges {
     grid-area: main;
     
-
+    a {
+        color: black;
+    }
     li {
         list-style-type: none;
         text-align: center;

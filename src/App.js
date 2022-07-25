@@ -17,7 +17,11 @@ const App = () => {
 
   const [data, setData] = React.useState([]);
   const [exchangesData, setExchangesData] = React.useState([]);
+  const [marketsData, setMarketsData] = React.useState([]);
   const [selectedCoin, setSelectedCoin] = React.useState();
+  const [home, setHome] = React.useState(true);
+  const [exchangePage, setExchangePage] = React.useState(false);
+  const [marketPage, setMarketPage] = React.useState(false);
 
   const ids = [];
   const symbols = [];
@@ -31,17 +35,15 @@ const App = () => {
     async function getTickers() {
       const coinCapResponse = await (await axios.get('https://api.coincap.io/v2/assets')).data;
       const exchanges = await (await axios.get('https://api.coincap.io/v2/exchanges')).data;
+      const marketsResponse = await (await axios.get('https://api.coincap.io/v2/markets')).data;
 
       setData(coinCapResponse.data);
       setExchangesData(exchanges.data);
+      setMarketsData(marketsResponse.data);
     }
 
     getTickers();
   }, []);
-
-  // const pricesWs = new WebSocket(`wss://ws.coincap.io/prices?assets=${names}`);
-
-  // pricesWs.onmessage = function (msg) {};
 
   data.forEach((el) => {
     ids.push(el.id);
@@ -66,7 +68,14 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header />
+      <Header
+        home={home}
+        setHome={setHome}
+        exchangePage={exchangePage}
+        setExchangePage={setExchangePage}
+        marketPage={marketPage}
+        setMarketPage={setMarketPage}
+      />
       <MarketInfo
         ids={ids}
         symbols={symbols}
@@ -91,7 +100,7 @@ const App = () => {
           }
         />
         <Route path="/exchanges" element={<Exchanges exchangesData={exchangesData} />} />
-        <Route path="/markets" element={<Markets />} />
+        <Route path="/markets" element={<Markets marketsData={marketsData} />} />
         <Route path="/coin" element={<Coin selectedCoin={selectedCoin} />} />
       </Routes>
     </div>

@@ -15,13 +15,15 @@ const Exchanges = ({ exchangesData }) => {
           </ul>
           {exchangesData.map((el, i) => {
             return (
-              <ul className="row">
-                <li>{exchangesData[i].rank}</li>
-                <li className="name_exchange">{exchangesData[i].name}</li>
-                <li>{exchangesData[i].tradingPairs}</li>
-                <li>$ {(exchangesData[i].volumeUsd / 1000000000).toFixed(2)}b</li>
-                <li>{(exchangesData[i].percentTotalVolume / 1).toFixed(2)}%</li>
-              </ul>
+              <a href={exchangesData[i].exchangeUrl} target="_blank">
+                <ul className="row">
+                  <li>{exchangesData[i].rank}</li>
+                  <li className="name_exchange">{exchangesData[i].name}</li>
+                  <li>{exchangesData[i].tradingPairs}</li>
+                  <li>$ {(exchangesData[i].volumeUsd / 1000000000).toFixed(2)}b</li>
+                  <li>{(exchangesData[i].percentTotalVolume / 1).toFixed(2)}%</li>
+                </ul>
+              </a>
             );
           })}
         </div>
