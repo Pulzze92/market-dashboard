@@ -86,7 +86,7 @@ const App = () => {
       />
       <Routes>
         <Route
-          path="/"
+          path="/market-dashboard"
           element={
             <Main
               names={names}
